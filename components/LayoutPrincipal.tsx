@@ -5,13 +5,16 @@ import {
   Calendar, 
   CreditCard, 
   AlertTriangle, 
-  MessageCircle, 
+  MessageCircle,
   ShoppingBag,
   BarChart3,
   FileText,
   TrendingUp,
   Star,
   Users,
+  UserPlus,
+  PawPrint,
+  Car,
   Settings,
   LogOut,
   Building2,
@@ -41,6 +44,9 @@ export function LayoutPrincipal({ children, paginaAtiva, onMudarPagina }: Layout
     { id: 'boletos', label: 'Boletos', icone: CreditCard, badge: 2 },
     { id: 'ocorrencias', label: 'Ocorrências', icone: AlertTriangle },
     { id: 'chat', label: 'Chat Portaria', icone: MessageCircle },
+    { id: 'visitantes', label: 'Visitantes', icone: UserPlus },
+    { id: 'pets', label: 'Pets', icone: PawPrint },
+    { id: 'veiculos', label: 'Veículos', icone: Car },
     { id: 'marketplace', label: 'Marketplace', icone: ShoppingBag }
   ];
 
@@ -51,6 +57,9 @@ export function LayoutPrincipal({ children, paginaAtiva, onMudarPagina }: Layout
     { id: 'relatorios', label: 'Relatórios', icone: TrendingUp },
     { id: 'avaliacao', label: 'Avaliações', icone: Star },
     { id: 'usuarios', label: 'Usuários', icone: Users },
+    { id: 'visitantes', label: 'Visitantes', icone: UserPlus },
+    { id: 'pets', label: 'Pets', icone: PawPrint },
+    { id: 'veiculos', label: 'Veículos', icone: Car },
     { id: 'comunicados', label: 'Comunicados', icone: MessageSquare },
     { id: 'reservas', label: 'Reservas', icone: Calendar },
     { id: 'ocorrencias', label: 'Ocorrências', icone: AlertTriangle, badge: 5 }
