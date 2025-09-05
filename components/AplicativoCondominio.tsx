@@ -15,6 +15,9 @@ import { PaginaRelatorios } from './paginas/PaginaRelatorios';
 import { PaginaAvaliacao } from './paginas/PaginaAvaliacao';
 import { PaginaUsuarios } from './paginas/PaginaUsuarios';
 import { PaginaConfiguracoes } from './paginas/PaginaConfiguracoes';
+import { PaginaVisitantes } from './paginas/PaginaVisitantes';
+import { PaginaPets } from './paginas/PaginaPets';
+import { PaginaVeiculos } from './paginas/PaginaVeiculos';
 
 // Páginas placeholder para outras funcionalidades
 function PaginaPlaceholder({ titulo }: { titulo: string }) {
@@ -78,6 +81,12 @@ export function AplicativoCondominio() {
         return <PaginaAvaliacao />;
       case 'usuarios':
         return <PaginaUsuarios />;
+      case 'visitantes':
+        return <PaginaVisitantes />;
+      case 'pets':
+        return <PaginaPets />;
+      case 'veiculos':
+        return <PaginaVeiculos />;
       case 'configuracoes':
         return <PaginaConfiguracoes onMudarPagina={setPaginaAtiva} />;
       default:
