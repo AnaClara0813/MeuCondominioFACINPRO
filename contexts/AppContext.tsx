@@ -24,6 +24,15 @@ interface ContextoApp {
 
 const ContextoApp = createContext<ContextoApp | undefined>(undefined);
 
+const rotasMarketing = ['/', '/landing', '/blog', '/marketing'];
+
+function estaEmRotaMarketing() {
+  if (typeof window === 'undefined') return false;
+
+  const { pathname } = window.location;
+  return rotasMarketing.some((rota) => pathname === rota || pathname.startsWith(`${rota}/`));
+}
+
 // Dados mockados para demonstração
 const usuariosMock = [
   {
@@ -53,17 +62,42 @@ export function ProvedorContextoApp({ children }: { children: React.ReactNode })
     const temaSalvo = localStorage.getItem('condominioTema');
     if (temaSalvo === 'dark') {
       setTemaDark(true);
-      document.documentElement.classList.add('dark');
     }
-    
+
     // Simular carregamento inicial
     setTimeout(() => setEstaCarregando(false), 1000);
   }, []);
 
+  // Aplicar tema apenas em rotas autenticadas / login
+  useEffect(() => {
+    const aplicarTema = () => {
+      const root = document.documentElement;
+      const emMarketing = estaEmRotaMarketing();
+
+      if (emMarketing) {
+        root.classList.remove('dark');
+        return;
+      }
+
+      if (temaDark) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+    };
+
+    aplicarTema();
+
+    window.addEventListener('popstate', aplicarTema);
+    return () => window.removeEventListener('popstate', aplicarTema);
+  }, [temaDark]);
+
   const alternarTema = () => {
+    if (estaEmRotaMarketing()) return;
+
     const novoTema = !temaDark;
     setTemaDark(novoTema);
-    
+
     if (novoTema) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('condominioTema', 'dark');
